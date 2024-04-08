@@ -1,0 +1,70 @@
+
+print("Welcome to the Contact Management System!")
+
+#menu of system options for user
+menu = """ Menu:
+1. Add a new contact
+2. Edit an existing contact
+3. Delete a contact
+4. Search for a contact
+5. Display all contacts
+6. Export contacts to a text file
+7. Quit
+"""
+
+print(menu)
+
+contacts = {}
+
+# add new contact 
+def add_contact():
+    print("Adding a new contact:")
+    unique_identifier = input("Enter unique identifier (e.g., phone number or email address): ")
+    name = input("Enter name: ")
+    phone_number = input("Enter phone number: ")
+    email = input("Enter email address: ")
+    additional_info = input("Enter additional information (optional): ")
+
+#contact dictionary
+    contact_details = {
+        "Name": name,
+        "Phone Number": phone_number,
+        "Email": email,
+        "Additional Info": additional_info
+    }
+
+    contacts[unique_identifier] = contact_details
+    print("Contact added successfully!")
+
+# all contacts display 
+def display_contacts():
+    print("\nAll Contacts:")
+    for identifier, details in contacts.items():
+        print(f"Identifier: {identifier}")
+        for key, value in details.items():
+            print(f"{key}: {value}")
+        print()
+
+def main():
+    while True:
+        print("\nMenu:")
+        print("1. Add a new contact")
+        print("2. Display all contacts")
+        print("3. Quit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            add_contact()
+        elif choice == '2':
+            display_contacts()
+        elif choice == '3':
+            print("Leaving CMS")
+            break
+        else:
+            print("Invalid choice. Please enter a valid option.")
+
+if __name__ == "__main__":
+    main()
+
+
